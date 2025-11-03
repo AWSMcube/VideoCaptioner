@@ -66,9 +66,9 @@ class BatchProcessInterface(QWidget):
         self.task_type_combo.setCurrentText(str(BatchTaskType.FULL_PROCESS))
 
         # 控制按钮
-        self.add_file_btn = PushButton("添加文件", icon=FIF.ADD)
-        self.start_all_btn = PushButton("开始处理", icon=FIF.PLAY)
-        self.clear_btn = PushButton("清空列表", icon=FIF.DELETE)
+        self.add_file_btn = PushButton(self.tr("添加文件"), icon=FIF.ADD)
+        self.start_all_btn = PushButton(self.tr("开始处理"), icon=FIF.PLAY)
+        self.clear_btn = PushButton(self.tr("清空列表"), icon=FIF.DELETE)
 
         # 添加到顶部布局
         top_layout.addWidget(self.task_type_combo)
@@ -81,7 +81,7 @@ class BatchProcessInterface(QWidget):
         # 创建任务表格
         self.task_table = TableWidget()
         self.task_table.setColumnCount(3)
-        self.task_table.setHorizontalHeaderLabels(["文件名", "进度", "状态"])
+        self.task_table.setHorizontalHeaderLabels([self.tr("文件名"), self.tr("进度"), self.tr("状态")])
 
         # 设置表格样式
         self.task_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
@@ -375,7 +375,8 @@ class BatchProcessInterface(QWidget):
 
         # 显示开始处理的提示
         InfoBar.success(
-            title="开始处理",
+            title=self.tr("开始处理"),
+            # TODO i don't know how to add self.tr() to this one
             content=f"开始处理 {waiting_tasks} 个任务",
             duration=2000,
             position=InfoBarPosition.TOP,
@@ -394,7 +395,8 @@ class BatchProcessInterface(QWidget):
         # 显示开始处理的提示
         file_name = os.path.basename(file_path)
         InfoBar.success(
-            title="开始处理",
+            title=self.tr("开始处理"),
+            # TODO i don't know how to add self.tr() to this one
             content=f"开始处理文件：{file_name}",
             duration=2000,
             position=InfoBarPosition.TOP,
