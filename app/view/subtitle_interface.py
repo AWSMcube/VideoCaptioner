@@ -256,7 +256,7 @@ class SubtitleInterface(QWidget):
         self.layout_button.setFixedHeight(34)
         self.layout_button.setMinimumWidth(125)
         self.layout_menu = RoundMenu(parent=self)
-        for layout in ["译文在上", "原文在上", "仅译文", "仅原文"]:
+        for layout in [self.tr("译文在上"), self.tr("原文在上"), self.tr("仅译文"), self.tr("仅原文")]:
             action = Action(text=layout)
             action.triggered.connect(
                 lambda checked,
